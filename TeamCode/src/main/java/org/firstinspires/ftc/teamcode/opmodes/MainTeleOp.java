@@ -40,8 +40,16 @@ public class MainTeleOp extends LinearOpMode {
             intake.update();
 
             double dis = vision.getDistance();
-            double pos = hood.adjustHood(dis);
-            hood.setPos(pos);
+            if (vision.hasTarget()) {
+                double hoodPos = hood.adjustHood(dis);
+                hood.setPos(hoodPos);
+                double power = outtake.powerCalculator(dis, hoodPos);
+                outtake.launch(power);
+            }
+            else {
+                hood.setDefaultPos();
+                outtake.launchDefaultPow();
+            }
         }
     }
 }

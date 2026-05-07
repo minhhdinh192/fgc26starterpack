@@ -29,4 +29,8 @@ public class Hood {
     public void update(){
         hood.setPosition(hoodPos);
     }
+
+    public void setDefaultPos() {
+        hood.setPosition(Constants.startPos);
+    }
 }

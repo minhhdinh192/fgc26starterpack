@@ -7,6 +7,7 @@ import org.firstinspires.ftc.teamcode.Constants;
 
 public class Outtake {
     DcMotorEx rightOuttake, leftOuttake;
+    double defaultPower = Constants.outtakePower;
 
     public Outtake(HardwareMap hwMap) {
         rightOuttake = hwMap.get(DcMotorEx.class, Constants.rightOuttake);
@@ -21,5 +22,16 @@ public class Outtake {
     public void launch(double power) {
         leftOuttake.setVelocity(power);
         rightOuttake.setVelocity(power);
+    }
+
+    public double powerCalculator(double dis, double pos) {
+        double power = dis * pos + 1200;
+        //nháp chứ đéo như này đâu ra đề tính lại sau
+        return power;
+    }
+
+    public void launchDefaultPow() {
+        leftOuttake.setVelocity(defaultPower);
+        rightOuttake.setVelocity(defaultPower);
     }
 }
