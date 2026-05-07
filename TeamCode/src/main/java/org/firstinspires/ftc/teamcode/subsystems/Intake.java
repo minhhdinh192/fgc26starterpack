@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.subsystems.Scoring;
+package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.Constants;
 
 public class Intake {
     CRServo intake;
-    public static enum intakeState {in, out, idle};
+    enum intakeState {in, out, idle};
     intakeState state = intakeState.idle;
 
     public Intake(HardwareMap hwMap) {
