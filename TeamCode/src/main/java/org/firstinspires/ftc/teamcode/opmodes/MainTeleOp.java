@@ -4,26 +4,20 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
-import org.firstinspires.ftc.teamcode.subsystems.Hood;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Outtake;
-import org.firstinspires.ftc.teamcode.subsystems.Vision;
 
 @TeleOp(name = "Main TeleOp", group = "TeleOp")
 public class MainTeleOp extends LinearOpMode {
     Drivetrain drivetrain;
     Intake intake;
     Outtake outtake;
-    Vision vision;
-    Hood hood;
 
     @Override
     public void runOpMode() {
         drivetrain = new Drivetrain(hardwareMap);
         intake = new Intake(hardwareMap);
         outtake = new Outtake(hardwareMap);
-        vision = new Vision(hardwareMap);
-        hood = new Hood(hardwareMap);
 
         waitForStart();
         if (isStopRequested()) return;
@@ -37,19 +31,12 @@ public class MainTeleOp extends LinearOpMode {
             if (gamepad1.y) intake.in();
             else if (gamepad1.a) intake.out();
             else intake.idle();
-            intake.update();
 
-            double dis = vision.getDistance();
-            if (vision.hasTarget()) {
-                double hoodPos = hood.adjustHood(dis);
-                hood.setPos(hoodPos);
-                double power = outtake.powerCalculator(dis, hoodPos);
-                outtake.launch(power);
-            }
-            else {
-                hood.setDefaultPos();
-                outtake.launchDefaultPow();
-            }
+            if (gamepad1.x) outtake.initiatePower();
+            else if (gamepad1.b) outtake.idle();
+            if (outtake.isReadyToShoot() && gamepad1.right_bumper) intake.pullForLaunch();
+
+            intake.update();
         }
     }
 }

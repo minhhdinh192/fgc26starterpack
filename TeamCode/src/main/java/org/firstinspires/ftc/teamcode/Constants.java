@@ -17,6 +17,7 @@ public class Constants {
     public static final double intakeIn = 1.0;
     public static final double intakeOut = -1.0;
     public static final double intakeIdle = 0;
+    public static final double pullForLaunch = 0.6;
 
     //Outtake
     public static final String rightOuttake = "rightOuttake";
@@ -27,17 +28,7 @@ public class Constants {
     public static final double outtakeF = 20.0;
     public static final int outtakePower = 1800;
     public static final int outtakeTolerance = 40;
-
-    //Adjustable hood
-    public static final String hood = "hood";
-    public static double startPos = 0.25;
-    public static double hoodTolerance = 0.015;
-    public static double mulA = 0.00002;
-    public static double mulB = 0.001;
-    public static double mulC = 0.15;
-
-    //Vision
-    public static final String vision = "Webcam 1";
+    public static final int outtakeIdle = 0;
 
     //Misc
     public static final double deadzone = 0.05;

@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.Constants;
 
 public class Intake {
     CRServo intake;
-    enum intakeState {in, out, idle};
+    enum intakeState {in, out, idle, pullForLaunch};
     intakeState state = intakeState.idle;
 
     public Intake(HardwareMap hwMap) {
@@ -24,7 +24,9 @@ public class Intake {
             case out:
                 intake.setPower(Constants.intakeOut);
                 break;
-
+            case pullForLaunch:
+                intake.setPower(Constants.pullForLaunch);
+                break;
             case idle:
                 intake.setPower(Constants.intakeIdle);
                 break;
@@ -41,5 +43,9 @@ public class Intake {
 
     public void idle() {
         state = intakeState.idle;
+    }
+
+    public void pullForLaunch() {
+        state = intakeState.pullForLaunch;
     }
 }

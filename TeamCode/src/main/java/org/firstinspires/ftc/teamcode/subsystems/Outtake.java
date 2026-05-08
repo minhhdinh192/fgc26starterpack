@@ -7,7 +7,8 @@ import org.firstinspires.ftc.teamcode.Constants;
 
 public class Outtake {
     DcMotorEx rightOuttake, leftOuttake;
-    double defaultPower = Constants.outtakePower;
+    double outtakePower = Constants.outtakePower;
+    double outtakeIdle = Constants.outtakeIdle;
 
     public Outtake(HardwareMap hwMap) {
         rightOuttake = hwMap.get(DcMotorEx.class, Constants.rightOuttake);
@@ -19,19 +20,19 @@ public class Outtake {
         leftOuttake.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
 
-    public void launch(double power) {
-        leftOuttake.setVelocity(power);
-        rightOuttake.setVelocity(power);
+    public void initiatePower() {
+        leftOuttake.setVelocity(outtakePower);
+        rightOuttake.setVelocity(outtakePower);
     }
 
-    public double powerCalculator(double dis, double pos) {
-        double power = dis * pos + 1200;
-        //nháp chứ đéo như này đâu ra đề tính lại sau
-        return power;
+    public void idle() {
+        leftOuttake.setVelocity(outtakeIdle);
+        rightOuttake.setVelocity(outtakeIdle);
     }
 
-    public void launchDefaultPow() {
-        leftOuttake.setVelocity(defaultPower);
-        rightOuttake.setVelocity(defaultPower);
+    public boolean isReadyToShoot() {
+        double currentPower = Math.max(leftOuttake.getVelocity(), rightOuttake.getVelocity());
+        double readyToShootPower = Constants.outtakePower - Constants.outtakeTolerance;
+        return currentPower >= readyToShootPower;
     }
 }
