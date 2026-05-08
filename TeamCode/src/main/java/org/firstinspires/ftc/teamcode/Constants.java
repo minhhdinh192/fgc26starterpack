@@ -30,6 +30,10 @@ public class Constants {
     public static final int outtakeTolerance = 40;
     public static final int outtakeIdle = 0;
 
+    //Glider
+    public static final String leftGlider = "leftGlider";
+    public static final String rightGlider = "rightGlider";
+
     //Misc
     public static final double deadzone = 0.05;
 }

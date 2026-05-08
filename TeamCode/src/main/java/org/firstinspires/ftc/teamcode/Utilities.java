@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 public class Utilities {
     public static double applyDeadzone(double value) {
-        return Math.abs(value) < Constants.deadzone ? 0.0 : value;
+        double deadzoneVal = Constants.deadzone;
+        if (Math.abs(value) < deadzoneVal) return 0.0;
+        else return value;
     }
 }

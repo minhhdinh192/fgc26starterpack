@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
+import org.firstinspires.ftc.teamcode.subsystems.Glider;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Outtake;
 
@@ -12,12 +13,14 @@ public class MainTeleOp extends LinearOpMode {
     Drivetrain drivetrain;
     Intake intake;
     Outtake outtake;
+    Glider glider;
 
     @Override
     public void runOpMode() {
         drivetrain = new Drivetrain(hardwareMap);
         intake = new Intake(hardwareMap);
         outtake = new Outtake(hardwareMap);
+        glider = new Glider(hardwareMap);
 
         waitForStart();
         if (isStopRequested()) return;
@@ -35,6 +38,11 @@ public class MainTeleOp extends LinearOpMode {
             if (gamepad1.x) outtake.initiatePower();
             else if (gamepad1.b) outtake.idle();
             if (outtake.isReadyToShoot() && gamepad1.right_bumper) intake.pullForLaunch();
+
+            double glideUpPower = gamepad1.right_trigger;
+            double glideDownPower = -gamepad1.left_trigger;
+            double glidePower = glideUpPower + glideDownPower;
+            glider.glide(glidePower);
 
             intake.update();
         }
