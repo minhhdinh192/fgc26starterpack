@@ -2,14 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 public class Constants {
     //Drivetrain
-    public static final String frontLeftDrive = "frontLeftDrive";
-    public static final String frontRightDrive = "frontRightDrive";
-    public static final String rearLeftDrive = "rearLeftDrive";
-    public static final String rearRightDrive = "rearRightDrive";
     public static final String leftDrive = "leftDrive";
     public static final String rightDrive = "rightDrive";
     public static final double maxVelocity = 1.0;
-    public static final double multiplier = 0.8;
 
 
     //Intake

@@ -1,18 +1,20 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
+import com.qualcomm.hardware.motors.RevRoboticsCoreHexMotor;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Constants;
 
 public class Intake {
-    CRServo intake;
+    DcMotor intake;
     enum intakeState {in, out, idle, pullForLaunch};
     intakeState state = intakeState.idle;
 
     public Intake(HardwareMap hwMap) {
-        intake = hwMap.get(CRServo.class, Constants.intake);
-        intake.setDirection(CRServo.Direction.REVERSE);
+        intake = hwMap.get(DcMotor.class, Constants.intake);
+        intake.setDirection(DcMotor.Direction.REVERSE);
     }
 
     public void update() {
@@ -20,7 +22,6 @@ public class Intake {
             case in:
                 intake.setPower(Constants.intakeIn);
                 break;
-
             case out:
                 intake.setPower(Constants.intakeOut);
                 break;

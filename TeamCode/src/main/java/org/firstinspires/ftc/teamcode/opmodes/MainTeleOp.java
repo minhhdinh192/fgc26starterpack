@@ -35,8 +35,8 @@ public class MainTeleOp extends LinearOpMode {
             else if (gamepad1.a) intake.out();
             else intake.idle();
 
-            if (gamepad1.x) outtake.initiatePower();
-            else if (gamepad1.b) outtake.idle();
+            if (gamepad1.x) outtake.on();
+            else if (gamepad1.b) outtake.off();
             if (outtake.isReadyToShoot() && gamepad1.right_bumper) intake.pullForLaunch();
 
             double glideUpPower = gamepad1.right_trigger;
@@ -45,6 +45,7 @@ public class MainTeleOp extends LinearOpMode {
             glider.glide(glidePower);
 
             intake.update();
+            outtake.update();
         }
     }
 }
