@@ -38,6 +38,7 @@ public class Outtake {
             case off:
                 leftOuttake.setVelocity(outtakeIdle);
                 rightOuttake.setVelocity(outtakeIdle);
+                break;
         }
     }
 
