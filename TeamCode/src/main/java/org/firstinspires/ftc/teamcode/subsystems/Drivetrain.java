@@ -7,13 +7,17 @@ import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Utilities;
 
 public class Drivetrain {
-    DcMotor leftDrive, rightDrive;
+    DcMotor frontLeftDrive, frontRightDrive, rearLeftDrive, rearRightDrive;
 
     public Drivetrain(HardwareMap hwMap) {
-        leftDrive = hwMap.get(DcMotor.class, Constants.leftDrive);
-        rightDrive = hwMap.get(DcMotor.class, Constants.rightDrive);
+        frontLeftDrive = hwMap.get(DcMotor.class, Constants.frontLeftDrive);
+        frontRightDrive = hwMap.get(DcMotor.class, Constants.frontRightDrive);
+        frontLeftDrive = hwMap.get(DcMotor.class, Constants.rearLeftDrive);
+        frontRightDrive = hwMap.get(DcMotor.class, Constants.rearRightDrive);
 
-        leftDrive.setDirection(DcMotor.Direction.REVERSE);
+        rearLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+        frontLeftDrive.setDirection(DcMotor.Direction.REVERSE);
+
     }
 
     double leftPower, rightPower, max = Constants.maxVelocity;
@@ -36,7 +40,9 @@ public class Drivetrain {
     }
 
     public void setDrivePower(double leftPower, double rightPower) {
-        leftDrive.setPower(leftPower);
-        rightDrive.setPower(rightPower);
+        frontLeftDrive.setPower(leftPower);
+        frontRightDrive.setPower(rightPower);
+        rearLeftDrive.setPower(leftPower);
+        rearRightDrive.setPower(rightPower);
     }
 }

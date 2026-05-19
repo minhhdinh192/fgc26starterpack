@@ -2,8 +2,10 @@ package org.firstinspires.ftc.teamcode;
 
 public class Constants {
     //Drivetrain
-    public static final String leftDrive = "leftDrive";
-    public static final String rightDrive = "rightDrive";
+    public static final String frontLeftDrive = "frontLeftDrive";
+    public static final String frontRightDrive = "frontRightDrive";
+    public static final String rearLeftDrive = "rearLeftDrive";
+    public static final String rearRightDrive = "rearRightDrive";
     public static final double maxVelocity = 1.0;
 
 
@@ -26,8 +28,7 @@ public class Constants {
     public static final int outtakeIdle = 0;
 
     //Glider
-    public static final String leftGlider = "leftGlider";
-    public static final String rightGlider = "rightGlider";
+    public static final String glider = "glider";
 
     //Misc
     public static final double deadzone = 0.05;
